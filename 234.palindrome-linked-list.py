@@ -29,6 +29,7 @@ class Solution:
             rev.next = temprev # input only rev's object address to rev.next but does not input slow's address because it has been changed
         if fast:
             slow = slow.next
+        # compare the reversed first half with the second half
         while rev and rev.val == slow.val:
             slow, rev = slow.next, rev.next
         return not rev
