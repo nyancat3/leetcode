@@ -26,4 +26,18 @@ class Solution:
             return height
 
         return balanced_height(root) != -1
+
+        # Below is a naive approach
+        # Time Complexity O(n)*n = O(n^2)
+        # def isBalanced(self, root: Optional[TreeNode]) -> bool:
+        #     if not root:
+        #         return True
+        #     if abs(self.height(root.left) - self.height(root.right)) > 1:
+        #         return False
+        #     return self.isBalanced(root.left) and self.isBalanced(root.right)
+
+        # def height(self, root):
+        #     if not root:
+        #         return 0
+        #     return 1 + max(self.height(root.left), self.height(root.right))
 # @lc code=end

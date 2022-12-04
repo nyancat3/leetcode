@@ -23,8 +23,8 @@ class Solution:
                 return 0
             l = diameter(node.left)
             r = diameter(node.right)
-            ans = max(ans, l + r)
-            return max(l, r) + 1
+            ans = max(ans, l + r)   # Calc the answer diameter
+            return max(l, r) + 1    # Return the height of this sub tree
 
         diameter(root)
         return ans
