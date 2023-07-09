@@ -6,11 +6,11 @@
 class Solution:
     def maximumJumps(self, nums: List[int], target: int) -> int:
         n = len(nums)
-        maxsteplist = [-1] * n
-        maxsteplist[-1] = 0 # get the last element by using -1 as the index value of the list
+        max_step_list = [-1] * n
+        max_step_list[-1] = 0 # get the last element by using -1 as the index value of the list
 
         for i in range(n - 2, -1, -1): # from n-2 to 0 decreasing
             for j in range(i + 1, n): # from i+1 to n-1
-                if (abs(nums[i] - nums[j]) <= target and maxsteplist[j] > -1):
-                    maxsteplist[i] = max(maxsteplist[i], maxsteplist[j] + 1)
-        return maxsteplist[0]
+                if (abs(nums[i] - nums[j]) <= target and max_step_list[j] > -1):
+                    max_step_list[i] = max(max_step_list[i], max_step_list[j] + 1)
+        return max_step_list[0]
