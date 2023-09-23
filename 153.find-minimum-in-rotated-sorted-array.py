@@ -13,7 +13,7 @@ class Solution:
         while l <= r:
             m = (l + r) // 2
             min_num = min(min_num, nums[m])
-            if nums[m] < nums[r]:
+            if nums[m] < nums[r]:   # the right side is in ascending order
                 r = m - 1
             else:
                 l = m + 1
