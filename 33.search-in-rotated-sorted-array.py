@@ -14,27 +14,17 @@ class Solution:
             print(l, m, r)
             if nums[m] == target:
                 return m
-            elif nums[l] == target:
-                return l
-            elif nums[r] == target:
-                return r
 
-            if nums[m] > target:    # wanna find smaller values
-                if nums[m] < nums[r]: # the pivot exists in the left part, the right side is in ascending order
+            if nums[l] <= nums[m]:  # m is in the left sorted portion
+                if nums[l] <= target <= nums[m]:  # if the target is in the current portion
                     r = m - 1   # move to the left
-                else:   # the pivot exists in the right part, the left side is in ascending order
-                    if nums[l] < target < nums[m]:
-                        r = m - 1   # move to the left
-                    else:
-                        l = m + 1   # move to the right
-            else:   # wanna find bigger values
-                if nums[m] < nums[r]: # the pivot exists in the left part, the right side is in ascending order
-                    if nums[m] < target < nums[r]:
-                        l = m + 1   # move to the right
-                    else:
-                        r = m - 1    # move to the left
-                else:   # the pivot exists in the right part, the left side is in ascending order
+                else:
                     l = m + 1   # move to the right
+            else:   # m is in the right sorted portion
+                if nums[m] <= target <= nums[r]:  # if the target is in the current portion
+                    l = m + 1   # move to the right
+                else:
+                    r = m - 1   # move to the left
         return -1
 
 # @lc code=end
