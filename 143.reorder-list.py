@@ -34,15 +34,14 @@ class Solution:
 
         # merge: 1->5->2->4->3
         first, second = head, prev
-        while second and second.next:   # second.next is necessary to avoid infinite loop
-            fist_next = first.next
-            second_next = second.next
-            first.next = second
-            # print('test1', first)
-            first.next.next = fist_next
-            # print('test2', first)
+        while second and second.next:   # loop twice: second.next is necessary to avoid 1->5->2->4->3->3
+            fist_next = first.next  # 2, 3
+            second_next = second.next   # 4, 3
+            first.next = second # 1->5, 2->4
+            first.next.next = fist_next # 5->2, 4->3
+            # 1->5->2, 1->5->2->4->3
 
-            first = fist_next
-            second = second_next
+            first = fist_next   # 2, 3
+            second = second_next    # 4, 3
 
 # @lc code=end
