@@ -30,8 +30,6 @@ class Solution:
                     node_addresses[curr.next] = ans.next
                 else:
                     ans.next = node_addresses[curr.next]
-            else:
-                ans.next = None
 
             if curr.random:
                 if curr.random in node_addresses:
