@@ -27,4 +27,30 @@ class Solution:
             l1 = l1.next if l1 else None
             l2 = l2.next if l2 else None
         return answer_head.next
+
+        # Solve 2 again on my own
+        ans_head = ListNode()
+        ans = ans_head
+        carry = 0
+        while l1 and l2:
+            div, mod = divmod(l1.val + l2.val + carry, 10)
+            ans.val = mod
+            carry = div
+
+            if l1.next and not l2.next:
+                l2.next = ListNode()
+            elif not l1.next and l2.next:
+                l1.next = ListNode()
+
+            l1 = l1.next
+            l2 = l2.next
+            if l1 and l2:
+                ans.next = ListNode()
+                ans = ans.next
+
+        if carry > 0:
+            ans.next = ListNode(carry)
+
+        return ans_head
+
 # @lc code=end
