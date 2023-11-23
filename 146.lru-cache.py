@@ -19,6 +19,11 @@ class LRUCache:
         self.left, self.right = Node(0, 0), Node(0, 0)
         self.left.next, self.right.prev = self.right, self.left
 
+    def remove(self, node):
+        prev, next = node.prev, node.next
+        prev.next = next
+        next.prev = prev
+
     def get(self, key: int) -> int:
         if key in self.cache:
             return self.cache[key]
