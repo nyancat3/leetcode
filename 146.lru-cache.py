@@ -25,6 +25,10 @@ class LRUCache:
         next.prev = prev
 
     def insert(self, node):
+        prev, next = self.right.prev, self.right
+        prev.next = next.prev = node
+        node.prev = prev
+        node.next = next
 
     def get(self, key: int) -> int:
         if key in self.cache:
