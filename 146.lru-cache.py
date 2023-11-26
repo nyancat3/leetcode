@@ -26,11 +26,13 @@ class LRUCache:
 
     def get(self, key: int) -> int:
         if key in self.cache:
-            return self.cache[key]
+            return self.cache[key].val
         return -1
 
 
     def put(self, key: int, value: int) -> None:
+        if key in self.cache:
+            self.remove(self.cache[key])
         if len(self.cache) >= self.capacity:
             # pop
         self.cache[key] = value
