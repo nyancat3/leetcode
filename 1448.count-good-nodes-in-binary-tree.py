@@ -14,17 +14,15 @@
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:
         # DFS
-        ans = 0
-        def isGoodNode(node: TreeNode, max_num: int):
-            nonlocal ans
+        def countGoodNodes(node: TreeNode, max_num: int):
+            res = 0
             if not node:
-                return
+                return 0
             if node.val >= max_num:
-                ans += 1
-                print(node.val)
+                res = 1
             max_num = max(max_num, node.val)
-            isGoodNode(node.left, max_num)
-            isGoodNode(node.right, max_num)
-        isGoodNode(root, root.val)
-        return ans
+            res += countGoodNodes(node.left, max_num)
+            res += countGoodNodes(node.right, max_num)
+            return res
+        return countGoodNodes(root, root.val)
 # @lc code=end
