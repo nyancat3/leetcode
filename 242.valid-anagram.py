@@ -8,16 +8,12 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
         # dictionary (hash map) T O(s + t), M O(s + t)
-        if len(s) != len(t):
-            return False
+        if len(s) != len(t): return False
         s_dict, t_dict = dict(), dict()
         for i in range(len(s)):
             s_dict[s[i]] = s_dict.get(s[i], 0) + 1
             t_dict[t[i]] = t_dict.get(t[i], 0) + 1
-        for key in s_dict:
-            if s_dict[key] != t_dict.get(key, 0):
-                return False
-        return True
+        return s_dict == t_dict # dictionaries are compared based on their key-value pairs, not on the order
 
         # counter (hash map) T O(s + t), M O(s + t)
         return Counter(s) == Counter(t)
